@@ -1,0 +1,18 @@
+#Creating Secrte for private repo#
+kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
+
+##Docker server registry## default
+ttps://index.docker.io/v1/
+
+
+
+##Adding Secret to containers##
+ containers:
+  - name: private-reg-container
+    image: <your-private-image>
+  imagePullSecrets:
+  - name: regcred
+
+NOTE: ALways make sure to change the repository in your docker hub to private due to secret key being attached.
+
+##HAPPY LEARNING##
